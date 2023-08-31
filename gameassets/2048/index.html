@@ -1,99 +1,105 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>2048</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git"
+    />
+    <meta name="author" content="Saturn" />
+    <meta content="The Game Collection" property="og:title" />
+    <meta content="Best HTML game site!" property="og:description" />
+    <meta name="theme-color" content="#858385" />
+    <meta property="og:image" content="/tgclogo.png" />
+    <title>The Game Collection | 2048</title>
+    <link rel="stylesheet" href="/css/game.css" />
+    <link rel="icon" type="image/png" href="/tgclogo.png" />
+  </head>
 
-  <link href="style/main.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
-  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
-  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- Google tag (gtag.js) -->
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CB3H5R2GXY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
-</head>
-<body>
-  <div class="container">
-    <div class="heading">
-      <h1 class="title">2048</h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
+  gtag('config', 'G-CB3H5R2GXY');
+</script>
+
+  <body>
+    <div class="navbar">
+      <div class="navitems">
+        <iframe
+          src="/iframe/navbarlogo.index.html"
+          frameborder="0"
+          class="navlogo"
+        ></iframe>
+        <a href="/"><div class="navitem">Home</div></a>
+        <a href="/games"><div class="navitem" current>Games</div></a>
+        <a href="/events"><div class="navitem">Events</div></a>
+        <a href="/leaderboards"><div class="navitem">Leaderboards</div></a>
+        <a href="/extra"><div class="navitem">Extra</div></a>
+        <a href="/settings"><div class="navitem">Settings</div></a>
+        <a href="/credits"><div class="navitem">Credits</div></a>
       </div>
     </div>
+    <div class="tgcgame">
+      <div class="game">
+        <div class="gameiframe">
+          <iframe
+            id="gameframe"
+            allowfullscreen=""
+            allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad; keyboard-map *; xr-spatial-tracking; clipboard-write"
+            scrolling="no"
+            class="iframe"
+            sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads"
+            src="/tgc-assets/gamestorage/2048/"
+          >
+          </iframe>
+        </div>
+      </div>
+      <div class="gamebar">
+        <div class="gametext">
+          <img src="https://raw.githubusercontent.com/hilfig3r/images/main/2048%232.png" class="gameicon" />
+          <div class="margin">
+            <div class="flex">
+              <h1 class="titletext">2048</h1>
+            </div>
+            <span class="bytext">By Gabriele Cirulli</span>
+          </div>
+        </div>
 
-    <div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-      <a class="restart-button">New Game</a>
+        <button1 id="reloadbtn">
+          <img src="/images/reload.png" class="reloadbtn" border="0" />
+
+          <button1 onclick="openFullscreen();" type="fullscreen">
+            <img
+              src="/images/fullscreen.png"
+              class="fullscreenbtn"
+              border="0"
+            />
+
+            <script>
+              var elem = document.getElementById("gameframe");
+              function openFullscreen() {
+                if (elem.requestFullscreen) {
+                  elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                  elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                  elem.msRequestFullscreen();
+                }
+              }
+
+              function reload() {
+                document.getElementById("gameframe").src += "";
+              }
+              reloadbtn.onclick = reload;
+            </script>
+          </button1></button1
+        >
+      </div>
     </div>
-
-    <div class="game-container">
-      <div class="game-message">
-        <p></p>
-        <div class="lower">
-	        <a class="keep-playing-button">Keep going</a>
-          <a class="retry-button">Try again</a>
-        </div>
-      </div>
-
-      <div class="grid-container">
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-      </div>
-
-      <div class="tile-container">
-
-      </div>
-    </div>
-
-    <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
-    </p>
-    <hr>
-    <p>
-    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
-    </p>
-    <hr>
-    <p>
-    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
-    </p>
-  </div>
-
-  <script src="js/bind_polyfill.js"></script>
-  <script src="js/classlist_polyfill.js"></script>
-  <script src="js/animframe_polyfill.js"></script>
-  <script src="js/keyboard_input_manager.js"></script>
-  <script src="js/html_actuator.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/tile.js"></script>
-  <script src="js/local_storage_manager.js"></script>
-  <script src="js/game_manager.js"></script>
-  <script src="js/application.js"></script>
-</body>
+  </body>
 </html>
